@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="shopViewModel"
+            type="com.example.shoppingapp.viewModels.ShopViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.ProductDetailFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/product_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="340dp"
+                tools:src="@drawable/ic_shopping_cart"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:productImageURL="@{shopViewModel.product.imageUrl}"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/product_name_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="One Plus 8"
+                android:text="@{shopViewModel.product.name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/price_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ `Rs ` + String.valueOf(shopViewModel.product.price)}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="Rs 52,000" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/status_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@{shopViewModel.product.available ? `Available` : `Out of stock`}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="@{shopViewModel.product.available ? @color/green : @color/red}" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrioption"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+            <TextView
+                android:id="@+id/descrioption_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi man this is one plus 8t, It is very good phone you can have. This phone have many fratures you can see more fratures on it's company website page or you can also visit www.oneplus.com or otherwise there are lots of ways of getting this phone knowledge \n
+Hi man this is one plus 8t, It is very good phone you can have. This phone have many fratures you can see more fratures on it's company website page or you can also visit www.oneplus.com or otherwise there are lots of ways of getting this phone knowledge \n
+ infact this phone is better than i phones majorly because of its quality on this price."
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <Button
+                android:id="@+id/add_cart_button_product_frag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:onClick="@{() -> shopViewModel.addItemToCart(shopViewModel.product)}"
+                android:enabled="@{shopViewModel.product.available}"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

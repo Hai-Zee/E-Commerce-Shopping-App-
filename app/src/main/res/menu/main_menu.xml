@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/cartFragmentID"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Cart"
+        app:actionLayout="@layout/cart_action_item"
+        app:showAsAction="always" />
+
+    <!-- **Important** here we need to use app:actionLayout=""  attribute,
+                                do not use android:actionLayout=""  -->
+</menu>
